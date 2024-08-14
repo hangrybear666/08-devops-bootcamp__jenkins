@@ -45,21 +45,19 @@ The main packages are:
 
 7. Dont forget to open ports in your remote firewall.
 
-    8080 for Jenkins, 22 for ssh.
+    50000 and 8080 for Jenkins, 22 for ssh.
 
 ## Usage (Demo Projects)
 
-0. Install docker and start jenkins in docker (dind) on remote VPS and configure adequately
+0. Install docker and start jenkins in docker (dind) on remote VPS and install node and npm inside jenkins-dind container
 
     NOTE: The installation script is aimed at Debian 12. See https://docs.docker.com/engine/install/debian/ 
     ```
     cd scripts
-    sudo chmod u+x remote-install-docker.sh
     ./remote-install-docker.sh
-    sudo chmod u+x remote-install-java.sh
     ./remote-install-java.sh
-    sudo chmod u+x remote-run-jenkins-in-docker.sh
     ./remote-run-jenkins-in-docker.sh
+    ./jenkins-container-install-node-npm.sh
     ```
 
     To setup and configure jenkins, you first need to extract the standard admin password from the docker container on your remote:
