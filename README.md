@@ -86,15 +86,15 @@ The main packages are:
 
 1. Run a declarative Jenkins Pipeline with embedded groovy script to build and push your java application to Docker Hub with Maven
 
-    a. Change the docker hub repository url in your `script.groovy` file to your own.
+    a. Change the default value of `DOCKER_HUB_REPO_URL`  in your `Jenkinsfile` file to your own or simply provide it as user input when building the pipeline with parameters.
 
     b. Add `docker-hub-repo` credential-id to jenkins with your username and password you can find in your `.env` file after having run setup step 8.
     
     c. Add your git credentials with the id `git-creds` and the username `x-token-auth` and fetch a personal access token from your git account.
 
-    d. Add Maven under Manage Jenkins -> Tools -> Maven and name it `Maven` 
+    d. Add Maven under Manage Jenkins -> Tools -> Maven and name it `Maven`.
 
-    e. Create a declarative pipeline under New Item -> Pipeline -> `java-app` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials.
+    e. Create a declarative pipeline under New Item -> Pipeline -> `java-app` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/main`.
 
     asd
 
