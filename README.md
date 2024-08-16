@@ -47,6 +47,19 @@ The main packages are:
 
     50000 and 8080 for Jenkins, 22 for ssh.
 
+8. Create Docker Hub Credentials and Repo
+
+    a. Sign up to Docker Hub https://hub.docker.com/ and create a personal access token at https://app.docker.com/settings/personal-access-tokens/ 
+
+    b. Save the Docker Hub Credentials in your `.env` file 
+
+    c. Then create a new private Repository and add the URL as well
+    ```
+    DOCKER_HUB_USER=xxx
+    DOCKER_HUB_TOKEN=xxx
+    DOCKER_HUB_REPO=hangrybear/devops_bootcamp
+    ```
+
 ## Usage (Demo Projects)
 
 0. Install docker and start jenkins in docker (dind) on remote VPS and install node and npm inside jenkins-dind container
@@ -71,9 +84,19 @@ The main packages are:
 
     Add your new admin credentials to `.env` file or store in another secure location to not lose access to jenkins.
 
-1. asd
+1. Run a declarative Jenkins Pipeline with embedded groovy script to build and push your java application to Docker Hub with Maven
 
-    asdf
+    a. Change the docker hub repository url in your `script.groovy` file to your own.
+
+    b. Add `docker-hub-repo` credential-id to jenkins with your username and password you can find in your `.env` file after having run setup step 8.
+    
+    c. Add your git credentials with the id `git-creds` and the username `x-token-auth` and fetch a personal access token from your git account.
+
+    d. Add Maven under Manage Jenkins -> Tools -> Maven and name it `Maven` 
+
+    e. Create a declarative pipeline under New Item -> Pipeline -> `java-app` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials.
+
+    asd
 
 ## Usage (Exercises)
 
