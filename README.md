@@ -128,9 +128,9 @@ The main projects are:
 
     b. Create a declarative pipeline under New Item -> Pipeline -> `java-app-versioning` and set it to get `java-app/Jenkinsfile_versioning` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/jenkins-jobs`.
 
-    c. Manage Jenkins -> Available Plugins -> Ignore Committer Strategy -> Install. Configure your pipelines to avoid builds after version commits from jenkins itself via Plugin by navigating to your multibranch pipeline settings and adding `jenkins@example.com` under Configuration -> Branch Sources -> Add -> Ignore Committer Strategy
+    c. Manage Jenkins -> Available Plugins -> Ignore Committer Strategy -> Install. Configure your pipelines to avoid builds after version commits from jenkins itself via Plugin by navigating to your multibranch pipeline settings and adding `jenkins@example.com` under Configuration -> Branch Sources -> Add -> Ignore Committer Strategy. NOTE: Make sure to check the `Allow builds when a changeset contains non-ignored author(s)` Flag!
 
-    d. For regular declarative pipeline we can use built-in functionality to ignore certain commits by author `jenkin` under Configuration -> Pipeline -> Additional Behaviors -> Add -> Polling ignores commits from certain users
+    d. For regular declarative pipeline we can use built-in functionality to ignore certain commits by author `jenkins` under Configuration -> Pipeline -> Additional Behaviors -> Add -> Polling ignores commits from certain users
 
     e. Build the pipeline and check the `jenkins-jobs` branch in your github repository for recent version/pom.xml pushes from jenkins user.
 
