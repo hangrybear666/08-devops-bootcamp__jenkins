@@ -14,14 +14,9 @@ pipeline {
         maven 'Maven'
     }
     parameters {
-        // string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
         text(name: 'DOCKER_HUB_REPO_URL', defaultValue: 'hangrybear/devops_bootcamp', description: 'Enter your own docker hub repository')
 
-        // booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
     stages {
         stage('init') {
             steps {
