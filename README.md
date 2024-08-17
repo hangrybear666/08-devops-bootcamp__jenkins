@@ -84,7 +84,7 @@ The main packages are:
 
     Add your new admin credentials to `.env` file or store in another secure location to not lose access to jenkins.
 
-1. Run a declarative Jenkins Pipeline with embedded groovy script to build and push your java application to Docker Hub with Maven
+1. Run a declarative Jenkins Pipeline (and a multibranch pipeline) with embedded groovy script to build and push your java application to Docker Hub with Maven
 
     a. Change the default value of `DOCKER_HUB_REPO_URL`  in your `Jenkinsfile` file to your own and push the changes.or simply provide it as user input when building the pipeline with parameters.
 
@@ -98,7 +98,7 @@ The main packages are:
 
     f. Create a multibranch pipeline under New Item -> Multibranch Pipeline -> `java-app-multibranch` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*`.
 
-    g. build both Pipelines manually in Jenkins UI
+    g. build both Pipelines manually in Jenkins UI. NOTE: You might have to run the multibranch pipeline twice and/or make changes to the branches after initially starting it, as the `DOCKER_HUB_REPO_URL` parameter might not get initialized and exposed correctly before SCM has pulled once.
 
 2. Run a declarative pipeline with dynamically parameterized code hosted in a Jenkins shared library for reusability and avoiding code duplication between microservices or teams.
 
@@ -109,6 +109,12 @@ The main packages are:
     b. Change the library identifier and remote in your `Jenkinsfile_sharedLibrary` file to your own and push the changes.
 
     c. Create a declarative pipeline under New Item -> Pipeline -> `java-app-sharedLibrary` and set it to get `java-app/Jenkinsfile_sharedLibrary` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/main`.
+
+    d. Build the pipeline 
+
+3. To setup Github and to trigger both your declarative pipeline and your multibranch pipeline after code has been pushed, follow these steps
+
+    a. Navigate to Manage Jenkins -> System -> Add Github Server with name `Github` and API_URL https://api.github.com adding a Github API Token as Jenkins credentials and add it to your `.env` file to not lose access. NOTE: The github token must have webhook permissions.
 
 
 ## Usage (Exercises)
