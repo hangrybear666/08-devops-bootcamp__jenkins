@@ -86,7 +86,7 @@ The main packages are:
 
 1. Run a declarative Jenkins Pipeline with embedded groovy script to build and push your java application to Docker Hub with Maven
 
-    a. Change the default value of `DOCKER_HUB_REPO_URL`  in your `Jenkinsfile` file to your own or simply provide it as user input when building the pipeline with parameters.
+    a. Change the default value of `DOCKER_HUB_REPO_URL`  in your `Jenkinsfile` file to your own and push the changes.or simply provide it as user input when building the pipeline with parameters.
 
     b. Add `docker-hub-repo` credential-id to jenkins with your username and password you can find in your `.env` file after having run setup step 8.
     
@@ -96,7 +96,20 @@ The main packages are:
 
     e. Create a declarative pipeline under New Item -> Pipeline -> `java-app` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/main`.
 
-    asd
+    f. Create a multibranch pipeline under New Item -> Multibranch Pipeline -> `java-app-multibranch` and set it to get `java-app/Jenkinsfile` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*`.
+
+    g. build both Pipelines manually in Jenkins UI
+
+2. Run a declarative pipeline with dynamically parameterized code hosted in a Jenkins shared library for reusability and avoiding code duplication between microservices or teams.
+
+    Note: Follow the setup steps from the prior step, specifically  b-d .
+
+    a. Change the default value of `DOCKER_HUB_REPO_URL` in your `Jenkinsfile_sharedLibrary` file to your own or simply provide it as user input when building the pipeline with parameters.
+
+    b. Change the library identifier and remote in your `Jenkinsfile_sharedLibrary` file to your own and push the changes.
+
+    c. Create a declarative pipeline under New Item -> Pipeline -> `java-app-sharedLibrary` and set it to get `java-app/Jenkinsfile_sharedLibrary` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/main`.
+
 
 ## Usage (Exercises)
 
