@@ -114,7 +114,11 @@ The main packages are:
 
 3. To setup Github and to trigger both your declarative pipeline and your multibranch pipeline after code has been pushed, follow these steps
 
-    a. Navigate to Manage Jenkins -> System -> Add Github Server with name `Github` and API_URL https://api.github.com adding a Github API Token as Jenkins credentials and add it to your `.env` file to not lose access. NOTE: The github token must have webhook permissions.
+    a. Navigate to Manage Jenkins -> System -> Add Github Server with name `Github`, check the "Manage Hooks" checkbox and and add the API_URL https://api.github.com with a Github API Token as Jenkins credentials and add it to your `.env` file to not lose access. NOTE: The github token must have webhook permissions.
+
+    b. In your pipeline/s check the "Github Projects" flag and set https://github.com/hangrybear666/08-devops-bootcamp__jenkins. Then add the `GitHub hook trigger for GITScm polling` Flag. 
+
+    c. In your Github Repository add your jenkins repo url on push events as hook, navigate to Settings -> Webhooks -> http://165.227.155.148:8080/github-webhook/ 
 
 
 ## Usage (Exercises)
