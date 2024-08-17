@@ -2,8 +2,11 @@
 
 Collection of Dockerfiles, Jenkinsfiles and shell scripts for automating java/node web app test, versioning, publishing and deployment via declarative Jenkins pipelines on remote VPS hosts.
 
-The main packages are:
-- asd
+The main projects are:
+- Scripts for installing docker, java, node & npm on remote and start a jenkins container with docker capabilities (Docker in Docker / DinD)
+- A declarative and a multibranch jenkins pipeline to build and push a Docker Image of a java maven application automatically on Github pushes via webhook.
+- A jenkins shared library containing dynamically parameterized groovy scripts and classes for standardizing and reusing common functionality between pipelines
+- 
 
 
 ## Setup
@@ -112,17 +115,20 @@ The main packages are:
 
     d. Build the pipeline 
 
-3. To setup Github and to trigger both your declarative pipeline and your multibranch pipeline after code has been pushed, follow these steps
+3. To setup Github and to trigger both your declarative pipeline and your multibranch pipeline after code has been pushed automatically via webhook, follow these steps
 
-    a. Navigate to Manage Jenkins -> System -> Add Github Server with name `Github`, check the "Manage Hooks" checkbox and and add the API_URL https://api.github.com with a Github API Token as Jenkins credentials and add it to your `.env` file to not lose access. NOTE: The github token must have webhook permissions.
+    a. Navigate to Manage Jenkins -> System -> Add Github Server with name `Github`, check the "Manage Hooks" checkbox and and add the API_URL https://api.github.com with a Github API Token as Jenkins credentials and add it to your `.env` file to not lose access. NOTE: The github token must have only webhook permissions, the rest is optional.
 
     b. In your pipeline/s check the "Github Projects" flag and set https://github.com/hangrybear666/08-devops-bootcamp__jenkins. Then add the `GitHub hook trigger for GITScm polling` Flag. 
 
     c. In your Github Repository add your jenkins repo url on push events as hook, navigate to Settings -> Webhooks -> http://165.227.155.148:8080/github-webhook/ 
 
+4. To have your pipeline automatically increment the artifact version, add a dynamic docker image tag and commit the version changes to scm without triggered an automatic build via push hook, follow these steps
+
+    a. Open `Jenkinsfile_versioning` and set your own repository url in `git remote set-url origin` in the commit version update stage. 
+
+    b. Create a declarative pipeline under New Item -> Pipeline -> `java-app-versioning` and set it to get `java-app/Jenkinsfile_versioning` (!) from SCM under Definition and add your Git Credentials with the branch specifier `*/jenkins-jobs`.
 
 ## Usage (Exercises)
 
-1. asd
-
-    asdf
+Note: Exercises for this part have been skipped as I am confident enough in working with Jenkins.
