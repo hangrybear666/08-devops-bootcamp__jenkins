@@ -14,9 +14,8 @@ pipeline {
         maven 'Maven'
     }
     parameters {
-
         text(name: 'DOCKER_HUB_REPO_URL', defaultValue: 'hangrybear/devops_bootcamp', description: 'Enter your own docker hub repository')
-
+    }
     stages {
         stage('init') {
             steps {
