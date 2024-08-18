@@ -27,7 +27,7 @@ The main projects are:
 
 4. Create environment files 
         
-    Add an `.env` file in your repository's `node-app/` directory and add the following key value-pairs:
+    Add an `.env` file in your repository's root directory and add the following key value-pairs:
     ```
     SERVICE_USER_PW=xxx
     ```
