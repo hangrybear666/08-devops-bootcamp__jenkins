@@ -40,6 +40,9 @@ touch authorized_keys
 echo "created .ssh/authorized keys file"
 echo "$PUBLIC_KEY" > authorized_keys
 echo "added public key to authorized_keys file of new user."
+
+# change default shell to bash
+sudo usermod --shell /bin/bash \$USER
 EOF
 
 # ssh into remote with newly created user to download Docker Engine
@@ -72,4 +75,10 @@ echo "Installed docker compose version: \$(docker compose version)"
 
 #Start docker daemon service
 sudo systemctl start docker
+
+# add user to docker group so docker commands can be run without sudo
+sudo usermod -aG docker \$USER
+
+# immediately activate group assignment
+newgrp docker
 EOF
