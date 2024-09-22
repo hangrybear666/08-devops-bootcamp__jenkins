@@ -4,7 +4,11 @@
 source ../config/remote.properties
 source ../.env
 
-PUBLIC_KEY=$(cat $HOME/.ssh/id_rsa.pub)
+read -p "Please provide public ssh key path: " PUB_KEY_PATH
+
+# to properly read the tilde and interpret it as the correct HOME path we use eval
+EXPANDED_PUB_KEY_PATH=$(eval echo $PUB_KEY_PATH)
+PUBLIC_KEY=$(cat $EXPANDED_PUB_KEY_PATH)
 
 ssh $ROOT_USER@$REMOTE_ADDRESS <<EOF
 # reset prior user and the respective home folder
