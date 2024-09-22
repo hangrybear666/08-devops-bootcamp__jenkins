@@ -6,6 +6,7 @@ source ../.env
 
 # ssh into remote with newly created user to download Java and Gradle
 ssh $ROOT_USER@$REMOTE_ADDRESS <<EOF
+apt-get update
 apt-get install -y openjdk-17-jdk-headless
 
 which_java=\$(which java)
