@@ -2,11 +2,11 @@
 
 Collection of Dockerfiles, Jenkinsfiles and shell scripts for automating java/node web app test, versioning, publishing and deployment via declarative Jenkins pipelines on remote VPS hosts.
 
-<u>The main projects are:</u>
-- Scripts for installing docker, java, node & npm on remote and start a jenkins container with docker capabilities (Docker in Docker / DinD)
-- A `Jenkinsfile` for a declarative and a multibranch jenkins pipeline to build and push a Docker Image of a java maven application automatically on Github pushes via webhook.
-- A `Jenkinsfile_sharedLibrary` containing dynamically parameterized groovy scripts and classes for standardizing and reusing common functionality between pipelines in a git hosted shared library.
-- A `Jenkinsfile_versioning` demonstrating automatic version incrementation, while commiting the new version to Github from the pipeline itself without triggering new builds via SCM webhook triggers.
+<u><b>The main projects are:</b></u>
+1. Scripts for installing docker, java, node & npm on remote and start a jenkins container with docker capabilities (Docker in Docker / DinD)
+2. A `Jenkinsfile` for a declarative and a multibranch jenkins pipeline to build and push a Docker Image of a java maven application automatically on Github pushes via webhook.
+3. A `Jenkinsfile_sharedLibrary` containing dynamically parameterized groovy scripts and classes for standardizing and reusing common functionality between pipelines in a git hosted shared library.
+4. A `Jenkinsfile_versioning` demonstrating automatic version incrementation, while commiting the new version to Github from the pipeline itself without triggering new builds via SCM webhook triggers.
 
 ## Setup
 
